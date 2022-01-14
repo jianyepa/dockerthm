@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  ubuntuthm:
+    # image: amr-registry-pre.caas.intel.com/manageability-swval-public/ubuntuthm
+    container_name: ${container_name:-ubuntuthm}
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        http_proxy: ${http_proxy:-http://proxy.png.intel.com:911}
+        https_proxy: ${https_proxy:-http://proxy.png.intel.com:912}
+        no_proxy: ${no_proxy:-intel.com}
+        username: 'root'
+        passwd: ${password:-root}
+    network_mode: 'host'
+    privileged: true
+    tty: true
+    stdin_open: true
+    # volumes:
+    #   - /dev/ttyUSB1:/dev/ttyUSB1
