@@ -4,6 +4,7 @@ software-properties-common
 openssl
 openssh-server
 openssh-client
+iproute2
 lxc-common
 libpython3.8
 ca-certificates

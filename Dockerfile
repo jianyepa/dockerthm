@@ -13,11 +13,10 @@ ENV no_prxy ${no_proxy}
 ENV DEBIAN_FRONTEND noninteractive
 # ENV HOME /home/${username}
 
-# Setup container dependencies
-######################### Caution #########################
-# Change line endings to LR in your editor if you modifying pkglist in Windows
-COPY pkglist requirements.txt post-install.sh ./
-RUN chmod +x post-install.sh && ./post-install.sh
+##################################### Caution #####################################
+# Change line endings to LR in your editor if you modifying below file in Windows
+COPY pkglist requirements.txt install-dependencies.sh configure-git-ssh-clone.sh ./
+RUN chmod +x install-dependencies.sh && ./install-dependencies.sh
 
 # Add password to root
 RUN echo ${username}:${passwd} | chpasswd
@@ -27,11 +26,12 @@ RUN sed -i 's/\(^Port\)/#\1/' /etc/ssh/sshd_config && echo Port 8080 >> /etc/ssh
 
 # SSH login fix. Otherwise user is kicked off after login
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
-
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
-
 RUN mkdir /var/run/sshd
+
+# configure git clone
+RUN chmod +x configure-git-ssh-clone.sh && ./configure-git-ssh-clone.sh
 
 # ENTRYPOINT [ "/usr/sbin/init" ]
 CMD ["/usr/sbin/sshd", "-D"]
