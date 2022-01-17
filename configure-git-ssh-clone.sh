@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -x
+
 mkdir ~/.ssh
 chmod 700 ~/.ssh
 

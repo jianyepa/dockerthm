@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 # Default install python 3.8.10
 apt update && apt install -y $(cat ./pkglist) && \
@@ -8,7 +9,7 @@ apt update && apt install -y $(cat ./pkglist) && \
 # Install Python 3.7 & 3.9
 add-apt-repository -y ppa:deadsnakes/ppa
 apt update
-apt install -y python3.7 python3.9 python3.10
+apt install -y python3.7 python3.9 python3.10 libpython3.7-dev
 
 # Change python3 to python 
 # Use python3.7 as default to support STAR
