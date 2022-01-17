@@ -1,4 +1,5 @@
 aardvark-py
+Image
 Pillow
 idna
 asgiref
