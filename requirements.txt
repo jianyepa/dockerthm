@@ -1,8 +1,6 @@
 aardvark-py
 Image
-Pillow
 idna
-asgiref
 async-generator
 attrs
 azure-core
@@ -21,7 +19,6 @@ dbus-python
 dill
 distro
 distro-info
-Django
 fuzzywuzzy
 h11
 MouseInfo
@@ -54,7 +51,6 @@ python-apt
 python-dateutil
 python3-xlib
 pytweening
-pytz
 PyYAML
 requests
 requests-unixsocket
@@ -63,7 +59,6 @@ six
 sniffio
 sortedcontainers
 soupsieve
-sqlparse
 ssh-import-id
 sshaolin
 termcolor
