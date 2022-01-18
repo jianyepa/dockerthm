@@ -30,3 +30,4 @@ npm
 uuid-runtime
 pkg-config
 libcairo2-dev
+screen
